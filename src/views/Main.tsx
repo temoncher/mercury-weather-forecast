@@ -5,9 +5,16 @@ import WeekForecast from './WeekForecast'
 
 const Main: React.FC = () => (
   <main className="main">
-    <div className="main__container">
-      <WeekForecast />
-      <PastDateForecast />
+    {/*
+      This div needs to wrap main container
+      for papers to not strech themselves straight
+      to the footer
+    */}
+    <div>
+      <div className="main__container">
+        <WeekForecast />
+        <PastDateForecast />
+      </div>
     </div>
   </main>
 )

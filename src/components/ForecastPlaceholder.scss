@@ -1,0 +1,10 @@
+.forecast-placeholder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  &__image {
+    align-self: center;
+  }
+}

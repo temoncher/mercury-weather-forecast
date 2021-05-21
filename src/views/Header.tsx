@@ -4,7 +4,7 @@ import './Header.scss'
 const Header: React.FC = () => (
   <header className="header">
     <div className="header__container">
-      <h1 className="header-text">
+      <h1 className="header-text text-headline">
         <span className="header-text__left">Weather</span>
         <span className="header-text__right">forecast</span>
       </h1>
