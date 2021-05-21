@@ -1,10 +1,14 @@
 import * as React from 'react'
 import './Main.scss'
+import PastDateForecast from './PastDateForecast'
+import WeekForecast from './WeekForecast'
 
 const Main: React.FC = () => (
   <main className="main">
-    <section className="week-forecast forecast-section">7 day forecast</section>
-    <section className="past-date-forecast forecast-section">Forecast for a Date in the Past</section>
+    <div className="main__container">
+      <WeekForecast />
+      <PastDateForecast />
+    </div>
   </main>
 )
 

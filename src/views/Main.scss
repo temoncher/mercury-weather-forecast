@@ -1,7 +1,11 @@
 .main {
   flex-grow: 1;
 
-  .forecast-section {
-    margin: 40px;
+  display: flex;
+  justify-content: center;
+
+  &__container {
+    width: 1200px;
+    display: flex;
   }
 }

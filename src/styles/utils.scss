@@ -1,7 +1,36 @@
 @import './variables.scss';
 
 .paper {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 58px;
+  margin: 40px;
+
   border-radius: 8px;
   background-color: $color-accent-contrast;
   box-shadow: 0px 4px 4px rgba(4, 5, 73, 0.25), 14px 14px 20px rgba(5, 6, 114, 0.2);
+
+  &:first-child {
+    margin-right: 20px;
+  }
+
+  &:not(:first-child) {
+    margin-left: 20px;
+  }
+
+  &:only-child {
+    margin: 40px;
+  }
+
+  &__header {
+    color: $color-base-strong;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 32px;
+    margin: 0 0 32px;
+  }
+
+  &__content {
+    flex: 1;
+  }
 }
