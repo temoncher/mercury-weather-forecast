@@ -1,0 +1,15 @@
+@import "src/styles/variables";
+
+.footer {
+  padding: 16px;
+
+  .text-footer {
+    color: $color-accent-contrast;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    opacity: 0.6;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
