@@ -15,6 +15,9 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.23.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
     "node-sass": "^5.0.0",
     "react-scripts": "4.0.3",
     "typescript": "^4.1.2"
@@ -23,13 +26,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "node ./node_modules/eslint/bin/eslint.js . --fix"
   },
   "eslintConfig": {
     "extends": [
+      "standard",
       "react-app",
-      "react-app/jest",
-      "standard"
+      "react-app/jest"
     ]
   },
   "browserslist": {
