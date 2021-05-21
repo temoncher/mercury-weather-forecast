@@ -1,0 +1,35 @@
+@import "styles/variables";
+
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  background-color: $color-accent;
+  background-image: url(assets/background/left-bottom.png), url(assets/background/top-right.png);
+  background-position: left bottom, top right;
+  background-size: cover, cover;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.main {
+  flex-grow: 1;
+
+  .forecast-section {
+    margin: 40px;
+  }
+}
+
+.footer {
+  padding: 16px;
+
+  .text-footer {
+    color: $color-accent-contrast;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    opacity: 0.6;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
