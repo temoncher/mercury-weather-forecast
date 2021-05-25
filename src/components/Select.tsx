@@ -43,7 +43,7 @@ const Select: React.FC<SelectProps> = (props) => {
 
   return (
     <div ref={rootRef} className={selectClass}>
-      <div className="select__input-container" onClick={() => setIsOpen(!isOpen)}>
+      <div className="select__input-container input" onClick={() => setIsOpen(!isOpen)}>
         <input className="text-body" readOnly value={props.label ?? props.value} placeholder={props.placeholder} />
         <img className="icon" src={ChevronTopSrc} alt={isOpen ? 'chevron-top' : 'chevron-bottom'} />
       </div>

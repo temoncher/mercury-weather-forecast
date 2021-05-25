@@ -10,40 +10,14 @@ $dropdown-shadow: 0px 2px 4px rgba(4, 5, 77, 0.16),
 
   &__input-container {
     cursor: pointer;
-    display: flex;
-    align-items: center;
-
-    padding: 12px 16px;
-
-    background-color: $color-secondary-lighter;
-
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 8px;
-    border-color: $color-secondary-light-x2;
     transition: $default-transition;
+
+    input {
+      cursor: pointer;
+    }
 
     .icon {
       transition: $default-transition;
-    }
-
-    input {
-      flex: 1;
-
-      padding: 0;
-
-      border-top-style: hidden;
-      border-right-style: hidden;
-      border-left-style: hidden;
-      border-bottom-style: hidden;
-
-      background-color: transparent;
-
-      color: $color-secondary;
-
-      &:focus {
-        outline: none;
-      }
     }
   }
 
@@ -77,11 +51,11 @@ $dropdown-shadow: 0px 2px 4px rgba(4, 5, 77, 0.16),
       transition: $default-transition;
 
       &::-webkit-scrollbar {
-        width: 8px;
+        width: 4px;
       }
 
       &::-webkit-scrollbar-thumb {
-        border-radius: 8px;
+        border-radius: 4px;
         background-color: $color-secondary-light;
       }
     }

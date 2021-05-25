@@ -1,0 +1,21 @@
+@import "src/styles/variables";
+
+.datepicker {
+  &__input-container {
+    cursor: pointer;
+    transition: $default-transition;
+
+    input {
+      cursor: pointer;
+
+      &::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        background-image: url(../assets/icons/16/calendar.png);
+      }
+    }
+
+    .icon {
+      transition: $default-transition;
+    }
+  }
+}
