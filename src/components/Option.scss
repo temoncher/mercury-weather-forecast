@@ -1,0 +1,21 @@
+@import "src/styles/variables";
+
+.select-option {
+  cursor: pointer;
+  padding: 6px 10px;
+
+  border-radius: 8px;
+
+  list-style-type: none;
+  color: $color-base-strong;
+
+  &:hover {
+    background-color: $color-secondary-light-x2;
+    color: $color-secondary-light-x2-contrast;
+  }
+
+  &--selected {
+    background-color: $color-accent;
+    color: $color-accent-contrast;
+  }
+}

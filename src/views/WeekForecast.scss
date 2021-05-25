@@ -2,4 +2,8 @@
 
 .week-forecast {
   flex: 1;
+
+  &__select-container {
+    display: flex;
+  }
 }

@@ -1,5 +1,7 @@
 .forecast-placeholder {
-  height: 100%;
+  flex: 1;
+  padding-top: 16px;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
