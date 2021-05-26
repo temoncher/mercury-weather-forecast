@@ -8,10 +8,31 @@
   margin: 0;
 
   font-weight: bold;
-  font-size: 102px;
-  line-height: 122px;
+  font-size: 104px;
+  line-height: 120px;
 
   color: $color-accent-contrast;
+}
+
+@media (max-width: $gridsize-xl) {
+  .text-headline {
+    font-size: 96px;
+    line-height: 96px;
+  }
+}
+
+@media (max-width: $gridsize-lg) {
+  .text-headline {
+    font-size: 64px;
+    line-height: 64px;
+  }
+}
+
+@media (max-width: $gridsize-sm) {
+  .text-headline {
+    font-size: 32px;
+    line-height: 32px;
+  }
 }
 
 .text-body {

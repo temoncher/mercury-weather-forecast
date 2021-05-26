@@ -3,11 +3,17 @@
 .root {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  width: 100vw;
 
   background-color: $color-accent;
   background-image: url(assets/background/left-bottom.png), url(assets/background/top-right.png);
   background-position: left bottom, top right;
   background-size: cover, cover;
   background-repeat: no-repeat, no-repeat;
+}
+
+@media (min-width: $gridsize-xl) {
+  .root {
+    height: 100vh;
+  }
 }

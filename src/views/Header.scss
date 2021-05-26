@@ -4,13 +4,13 @@
   display: flex;
   justify-content: center;
 
-  padding: 65px 0 0;
+  padding: 64px 0 24px;
 
   font-weight: bold;
   color: $color-accent-contrast;
 
   &__container {
-    width: 766px;
+    width: 792px;
   }
 
   .header-text {
@@ -22,6 +22,36 @@
     &__right {
       display: block;
       text-align: right;
+    }
+  }
+}
+
+@media (max-width: $gridsize-xl) {
+  .header {
+    padding: 48px 0 16px;
+
+    &__container {
+      width: 732px
+    }
+  }
+}
+
+@media (max-width: $gridsize-lg) {
+  .header {
+    padding: 32px 0 12px;
+
+    &__container {
+      width: 488px
+    }
+  }
+}
+
+@media (max-width: $gridsize-sm) {
+  .header {
+    padding: 24px 0 8px;
+
+    &__container {
+      width: 244px
     }
   }
 }

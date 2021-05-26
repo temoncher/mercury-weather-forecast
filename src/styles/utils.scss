@@ -1,30 +1,23 @@
-@import './variables.scss';
+@import "./variables.scss";
 
 $paper-padding-horizontal: 40px;
 $paper-margin-horizontal: 40px;
+
+$paper-max-width: (
+    $gridsize-xl -
+      ($paper-margin-horizontal * 3 + $paper-padding-horizontal * 4)
+  ) / 2;
 
 .paper {
   display: flex;
   flex-direction: column;
   padding: 32px 40px;
-  margin: 40px;
-  max-width: calc((#{$gridsize-lg} - (#{$paper-margin-horizontal} * 3 + #{$paper-padding-horizontal} * 4)) / 2);
+  width: $paper-max-width;
 
   border-radius: 8px;
   background-color: $color-accent-contrast;
-  box-shadow: 0px 4px 4px rgba(4, 5, 73, 0.25), 14px 14px 20px rgba(5, 6, 114, 0.2);
-
-  &:first-child {
-    margin-right: 20px;
-  }
-
-  &:not(:first-child) {
-    margin-left: 20px;
-  }
-
-  &:only-child {
-    margin: 40px;
-  }
+  box-shadow: 0px 4px 4px rgba(4, 5, 73, 0.25),
+    14px 14px 20px rgba(5, 6, 114, 0.2);
 
   &__header {
     color: $color-base-strong;
@@ -39,6 +32,47 @@ $paper-margin-horizontal: 40px;
 
     display: flex;
     flex-direction: column;
+  }
+}
+
+@media (min-width: $gridsize-xl) {
+  .paper {
+    margin: 40px;
+
+    &:first-child {
+      margin-right: 20px;
+    }
+
+    &:not(:first-child) {
+      margin-left: 20px;
+    }
+
+    &:only-child {
+      margin: 40px;
+    }
+  }
+}
+
+@media (max-width: $gridsize-xl) {
+  .paper {
+    margin: 24px;
+  }
+}
+
+@media (max-width: $gridsize-sm) {
+  $paper-padding-horizontal-sm: 32px;
+  $paper-margin-horizontal-sm: 8px;
+
+  .paper {
+    padding: 24px $paper-padding-horizontal-sm;
+    margin: $paper-margin-horizontal-sm;
+    width: calc(
+      100vw -
+        (
+          #{$paper-margin-horizontal-sm} * 2 + #{$paper-padding-horizontal-sm} *
+            2
+        )
+    );
   }
 }
 

@@ -8,3 +8,9 @@
     margin-bottom: 24px;
   }
 }
+
+@media (max-width: $gridsize-sm) {
+  .week-forecast__select-container {
+    margin-bottom: 16px;
+  }
+}

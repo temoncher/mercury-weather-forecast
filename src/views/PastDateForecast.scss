@@ -1,3 +1,5 @@
+@import "src/styles/variables";
+
 .past-date-forecast {
   flex: 1;
 
@@ -7,6 +9,11 @@
 
   &__inputs-container {
     display: flex;
+  }
+}
+
+@media (min-width: $gridsize-sm) {
+  .past-date-forecast__inputs-container {
     margin-bottom: 24px;
 
     > :not(:last-child) {
@@ -15,6 +22,20 @@
 
     > :not(:first-child) {
       margin-left: 4px;
+    }
+  }
+}
+
+@media (max-width: $gridsize-sm) {
+  .past-date-forecast__inputs-container {
+    flex-direction: column;
+
+    > .select {
+      margin-bottom: 8px;
+    }
+
+    > .datepicker {
+      margin-bottom: 16px;
     }
   }
 }
