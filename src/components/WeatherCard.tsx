@@ -12,7 +12,8 @@ const ICON_URL_ROOT = 'http://openweathermap.org/img/wn/'
 
 const WeatherCard: React.FC<WeatherCardProps> = (props) => {
   const date = React.useMemo<Date>(() => new Date(props.date * 1000), [props.date])
-  const temperature = props.temperature > 0 ? `+${props.temperature}°` : `${props.temperature}°`
+  const roundedTemperature = Math.round(props.temperature)
+  const temperature = roundedTemperature >= 0 ? `+${roundedTemperature}°` : `${roundedTemperature}°`
 
   return (
     <div className="weather-card">
