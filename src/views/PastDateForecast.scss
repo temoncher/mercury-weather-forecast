@@ -8,11 +8,11 @@
   &__inputs-container {
     display: flex;
 
-    :not(:last-child) {
+    > :not(:last-child) {
       margin-right: 4px;
     }
 
-    :not(:first-child) {
+    > :not(:first-child) {
       margin-left: 4px;
     }
   }

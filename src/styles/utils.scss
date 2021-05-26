@@ -1,10 +1,14 @@
 @import './variables.scss';
 
+$paper-padding-horizontal: 40px;
+$paper-margin-horizontal: 40px;
+
 .paper {
   display: flex;
   flex-direction: column;
   padding: 32px 40px;
   margin: 40px;
+  max-width: calc((#{$gridsize-lg} - (#{$paper-margin-horizontal} * 3 + #{$paper-padding-horizontal} * 4)) / 2);
 
   border-radius: 8px;
   background-color: $color-accent-contrast;
@@ -27,7 +31,7 @@
     font-weight: bold;
     font-size: 32px;
     line-height: 32px;
-    margin: 0 0 32px;
+    margin: 0 0 24px;
   }
 
   &__content {

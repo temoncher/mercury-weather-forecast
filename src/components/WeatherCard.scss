@@ -1,0 +1,33 @@
+@import "src/styles/variables";
+
+.weather-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  scroll-snap-align: start;
+
+  margin: 0 5px;
+  padding: 20px;
+
+  background-color: $color-accent;
+
+  border-radius: 8px;
+
+  &__date {
+    text-align: left;
+    color: $color-accent-contrast;
+  }
+
+  &__image {
+    width: 100px;
+    align-self: center;
+  }
+
+  &__temperature {
+    text-align: right;
+    color: $color-accent-contrast;
+    font-size: 32px;
+    font-weight: bold;
+  }
+}

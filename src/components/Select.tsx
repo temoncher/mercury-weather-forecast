@@ -6,7 +6,6 @@ import { useClickOutside } from '../hooks/useClickOutside'
 import { classnames } from '../utils/classnames'
 
 interface SelectProps {
-  className?: string;
   value: string;
   label?: string;
   placeholder?: string;
@@ -37,8 +36,7 @@ const Select: React.FC<SelectProps> = (props) => {
 
   const selectClass = classnames({
     select: true,
-    'select--focused': isOpen,
-    [props.className ?? '']: Boolean(props.className)
+    'select--focused': isOpen
   })
 
   return (

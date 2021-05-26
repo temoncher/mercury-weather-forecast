@@ -4,10 +4,32 @@ import ForecastPlaceholder from '../components/ForecastPlaceholder'
 import Select from '../components/Select'
 import Option from '../components/Option'
 import { cities } from '../constants'
+import { weatherApi } from '../services/WeatherApi'
+import WeatherCarousel from '../components/WeatherCarousel'
+import { DailyForecast } from '../models/DailyForecast'
+import { City } from '../models/City'
 
 const WeekForecast: React.FC = () => {
   const [chosenCityId, setChosenCityId] = React.useState<string | undefined>(undefined)
+  const [dailies, setDailies] = React.useState<DailyForecast[]>([])
   const chosenCity = React.useMemo(() => cities.find((city) => city.id === chosenCityId), [chosenCityId])
+
+  const fetchDailies = async (chosenCity: City): Promise<DailyForecast[]> => {
+    const weeklyForecastResponse = await weatherApi.fetchWeeklyForecast(chosenCity)
+
+    return weeklyForecastResponse.daily.map((daily) => ({
+      temperature: daily.temp.day,
+      date: daily.dt,
+      icon: daily.weather[0].icon
+    }))
+  }
+
+  React.useEffect(() => {
+    if (chosenCity) {
+      fetchDailies(chosenCity)
+        .then((fetchedDailies) => setDailies(fetchedDailies))
+    }
+  }, [chosenCity])
 
   return (
     <section className="week-forecast paper">
@@ -23,7 +45,7 @@ const WeekForecast: React.FC = () => {
             {cities.map((city) => <Option key={city.id} value={city.id}>{city.name}</Option>)}
           </Select>
         </div>
-        <ForecastPlaceholder />
+        {dailies.length > 0 ? <WeatherCarousel dailies={dailies} /> : <ForecastPlaceholder />}
       </div>
     </section>
   )

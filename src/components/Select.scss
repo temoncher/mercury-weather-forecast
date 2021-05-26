@@ -23,6 +23,7 @@ $dropdown-shadow: 0px 2px 4px rgba(4, 5, 77, 0.16),
 
   &__dropdown {
     position: absolute;
+    z-index: 1;
     box-sizing: border-box;
     width: 100%;
 

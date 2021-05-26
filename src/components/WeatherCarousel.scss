@@ -1,0 +1,31 @@
+.weather-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+  }
+
+  &__list {
+    display: flex;
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__left-button {
+    position: absolute;
+    left: -32px;
+  }
+
+  &__right-button {
+    position: absolute;
+    right: -32px;
+  }
+}
