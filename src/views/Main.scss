@@ -1,3 +1,5 @@
+@import "src/styles/variables";
+
 .main {
   flex-grow: 1;
 
@@ -5,7 +7,7 @@
   justify-content: center;
 
   &__container {
-    width: 1200px;
+    width: $gridsize-lg;
     display: flex;
   }
 }

@@ -5,11 +5,34 @@ import Select from '../components/Select'
 import DatePicker from '../components/DatePicker'
 import Option from '../components/Option'
 import { cities } from '../constants'
+import WeatherCard from '../components/WeatherCard'
+import { DailyForecast } from '../models/DailyForecast'
+import { weatherApi } from '../services/WeatherApi'
+import { dateToUnix } from '../utils/date'
+import { isErrorResponse } from '../services/models/ErrorResponse'
 
 const PastDateForecast: React.FC = () => {
   const [chosenCityId, setChosenCityId] = React.useState<string | undefined>(undefined)
-  const [date, setDate] = React.useState<string>('')
+  const [date, setDate] = React.useState('')
+  const [forecast, setForecast] = React.useState<DailyForecast | undefined>(undefined)
   const chosenCity = React.useMemo(() => cities.find((city) => city.id === chosenCityId), [chosenCityId])
+
+  React.useEffect(() => {
+    if (chosenCity && date) {
+      const unixDate = dateToUnix(new Date(date))
+
+      weatherApi.fetchHistory(chosenCity, unixDate)
+        .then((res) => {
+          if (isErrorResponse(res)) return
+
+          setForecast({
+            date: res.current.dt,
+            temperature: res.current.temp,
+            icon: res.current.weather[0].icon
+          })
+        })
+    }
+  }, [chosenCity, date])
 
   return (
     <section className="past-date-forecast paper">
@@ -26,7 +49,15 @@ const PastDateForecast: React.FC = () => {
           </Select>
           <DatePicker value={date} onDateChange={(event) => setDate(event.target.value)} />
         </div>
-        <ForecastPlaceholder />
+        {forecast
+          ? (
+              <WeatherCard
+                temperature={forecast.temperature}
+                icon={forecast.icon}
+                date={forecast.date}
+              />
+            )
+          : <ForecastPlaceholder />}
       </div>
     </section>
   )

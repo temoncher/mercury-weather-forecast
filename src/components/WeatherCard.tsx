@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { formatDayMonthYear } from '../utils/date'
+import { formatDayMonthYear, unixToDate } from '../utils/date'
 import './WeatherCard.scss'
 
 interface WeatherCardProps {
@@ -21,7 +21,7 @@ const formatTemperature = (temperature: number): string => {
 
 const WeatherCard: React.FC<WeatherCardProps> = (props) => (
     <div className="weather-card">
-      <span className="weather-card__date text-subtitle">{formatDayMonthYear(new Date(props.date * 1000))}</span>
+      <span className="weather-card__date text-subtitle">{formatDayMonthYear(unixToDate(props.date))}</span>
       <img className="weather-card__image" src={`${ICON_URL_ROOT}${props.icon}@2x.png`} alt="weather" />
       <span className="weather-card__temperature">{formatTemperature(props.temperature)}</span>
     </div>
