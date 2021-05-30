@@ -9,7 +9,7 @@
   list-style-type: none;
   color: $color-base-strong;
 
-  &:hover {
+  &--highlighted {
     background-color: $color-secondary-light-x2;
     color: $color-secondary-light-x2-contrast;
   }

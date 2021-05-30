@@ -8,7 +8,7 @@ import WeatherCard from '../components/WeatherCard'
 import { cities } from '../constants'
 import { DailyForecast } from '../models/DailyForecast'
 import { weatherApi } from '../services/WeatherApi'
-import { dateToUnix } from '../utils/date'
+import { dateToISO, dateToUnix, subtractDays } from '../utils/date'
 import { isErrorResponse } from '../services/models/ErrorResponse'
 
 const PastDateForecast: React.FC = () => {
@@ -34,6 +34,9 @@ const PastDateForecast: React.FC = () => {
     }
   }, [chosenCity, date])
 
+  const minDate = dateToISO(subtractDays(new Date(), 5))
+  const maxDate = dateToISO(new Date())
+
   return (
     <section className="past-date-forecast paper">
       <h2 className="paper__header">Forecast for a Date in the Past</h2>
@@ -47,7 +50,13 @@ const PastDateForecast: React.FC = () => {
           >
             {cities.map((city) => <Option key={city.id} value={city.id}>{city.name}</Option>)}
           </Select>
-          <DatePicker value={date} onDateChange={(event) => setDate(event.target.value)} />
+          <DatePicker
+            placeholder="Select date"
+            value={date}
+            min={minDate}
+            max={maxDate}
+            onDateChange={(event) => setDate(event.target.value)}
+          />
         </div>
         {forecast
           ? (

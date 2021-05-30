@@ -8,3 +8,11 @@ export const formatDayMonthYear = (date: Date) => {
 
   return `${day} ${month} ${year}`
 }
+
+export const dateToISO = (date: Date): string => date.toISOString().substring(0, 10)
+
+export const subtractDays = (date: Date, numberOfDays: number): Date => {
+  const newDate = new Date()
+  newDate.setDate(date.getDate() - numberOfDays)
+  return newDate
+}

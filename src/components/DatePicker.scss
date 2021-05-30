@@ -1,6 +1,8 @@
 @import "src/styles/variables";
 
 .datepicker {
+  $self: &;
+
   &__input-container {
     cursor: pointer;
     transition: $default-transition;
@@ -17,5 +19,9 @@
     .icon {
       transition: $default-transition;
     }
+  }
+
+  &--focused #{$self}__input-container {
+    border-color: $color-accent;
   }
 }

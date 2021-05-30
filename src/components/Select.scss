@@ -62,13 +62,13 @@ $dropdown-shadow: 0px 2px 4px rgba(4, 5, 77, 0.16),
     }
   }
 
-  &--focused {
-    #{$self}__input-container {
-      border-color: $color-accent;
+  &--focused #{$self}__input-container {
+    border-color: $color-accent;
+  }
 
-      .icon {
-        transform: rotate(-180deg);
-      }
+  &--open {
+    #{$self}__input-container .icon {
+      transform: rotate(-180deg);
     }
 
     #{$self}__dropdown {
