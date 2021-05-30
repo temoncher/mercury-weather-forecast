@@ -3,16 +3,13 @@
 $paper-padding-horizontal: 40px;
 $paper-margin-horizontal: 40px;
 
-$paper-max-width: (
-    $gridsize-xl -
-      ($paper-margin-horizontal * 3 + $paper-padding-horizontal * 4)
-  ) / 2;
+$paper-width: ($gridsize-xl - ($paper-margin-horizontal * 3 + $paper-padding-horizontal * 4)) / 2;
 
 .paper {
   display: flex;
   flex-direction: column;
   padding: 32px 40px;
-  width: $paper-max-width;
+  width: $paper-width;
 
   border-radius: 8px;
   background-color: $color-accent-contrast;
@@ -33,10 +30,8 @@ $paper-max-width: (
     display: flex;
     flex-direction: column;
   }
-}
 
-@media (min-width: $gridsize-xl) {
-  .paper {
+  @media (min-width: $gridsize-xl) {
     margin: 40px;
 
     &:first-child {
@@ -51,28 +46,18 @@ $paper-max-width: (
       margin: 40px;
     }
   }
-}
 
-@media (max-width: $gridsize-xl) {
-  .paper {
+  @media (max-width: $gridsize-xl) {
     margin: 24px;
   }
-}
 
-@media (max-width: $gridsize-sm) {
-  $paper-padding-horizontal-sm: 32px;
-  $paper-margin-horizontal-sm: 8px;
+  @media (max-width: $gridsize-sm) {
+    $paper-padding-horizontal-sm: 32px;
+    $paper-margin-horizontal-sm: 8px;
 
-  .paper {
     padding: 24px $paper-padding-horizontal-sm;
     margin: $paper-margin-horizontal-sm;
-    width: calc(
-      100vw -
-        (
-          #{$paper-margin-horizontal-sm} * 2 + #{$paper-padding-horizontal-sm} *
-            2
-        )
-    );
+    width: calc(100vw - (#{$paper-margin-horizontal-sm} * 2 + #{$paper-padding-horizontal-sm} * 2));
   }
 }
 

@@ -1,4 +1,4 @@
-@import 'src/styles/variables';
+@import "src/styles/variables";
 
 .week-forecast {
   flex: 1;
@@ -6,11 +6,9 @@
   &__select-container {
     display: flex;
     margin-bottom: 24px;
-  }
-}
 
-@media (max-width: $gridsize-sm) {
-  .week-forecast__select-container {
-    margin-bottom: 16px;
+    @media (max-width: $gridsize-sm) {
+      margin-bottom: 16px;
+    }
   }
 }

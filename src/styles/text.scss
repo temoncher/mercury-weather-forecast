@@ -1,4 +1,4 @@
-@import './variables';
+@import "./variables";
 
 .text-center {
   text-align: center;
@@ -12,24 +12,18 @@
   line-height: 120px;
 
   color: $color-accent-contrast;
-}
 
-@media (max-width: $gridsize-xl) {
-  .text-headline {
+  @media (max-width: $gridsize-xl) {
     font-size: 96px;
     line-height: 96px;
   }
-}
 
-@media (max-width: $gridsize-lg) {
-  .text-headline {
+  @media (max-width: $gridsize-lg) {
     font-size: 64px;
     line-height: 64px;
   }
-}
 
-@media (max-width: $gridsize-sm) {
-  .text-headline {
+  @media (max-width: $gridsize-sm) {
     font-size: 32px;
     line-height: 32px;
   }

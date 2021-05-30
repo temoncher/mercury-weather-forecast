@@ -8,12 +8,10 @@
   background-color: $color-accent;
   background-image: url(assets/background/left-bottom.png), url(assets/background/top-right.png);
   background-position: left bottom, top right;
-  background-size: cover, cover;
+  background-size: 100% auto, 100% auto;
   background-repeat: no-repeat, no-repeat;
-}
 
-@media (min-width: $gridsize-xl) {
-  .root {
+  @media (min-width: $gridsize-xl) {
     height: 100vh;
   }
 }

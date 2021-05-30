@@ -10,10 +10,8 @@
   &__inputs-container {
     display: flex;
   }
-}
 
-@media (min-width: $gridsize-sm) {
-  .past-date-forecast__inputs-container {
+  @media (min-width: $gridsize-sm) {
     margin-bottom: 24px;
 
     > :not(:last-child) {
@@ -24,10 +22,8 @@
       margin-left: 4px;
     }
   }
-}
 
-@media (max-width: $gridsize-sm) {
-  .past-date-forecast__inputs-container {
+  @media (max-width: $gridsize-sm) {
     flex-direction: column;
 
     > .select {

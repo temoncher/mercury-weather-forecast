@@ -24,34 +24,28 @@
       text-align: right;
     }
   }
-}
 
-@media (max-width: $gridsize-xl) {
-  .header {
+  @media (max-width: $gridsize-xl) {
     padding: 48px 0 16px;
 
     &__container {
-      width: 732px
+      width: 732px;
     }
   }
-}
 
-@media (max-width: $gridsize-lg) {
-  .header {
+  @media (max-width: $gridsize-lg) {
     padding: 32px 0 12px;
 
     &__container {
-      width: 488px
+      width: 488px;
     }
   }
-}
 
-@media (max-width: $gridsize-sm) {
-  .header {
+  @media (max-width: $gridsize-sm) {
     padding: 24px 0 8px;
 
     &__container {
-      width: 244px
+      width: 244px;
     }
   }
 }
