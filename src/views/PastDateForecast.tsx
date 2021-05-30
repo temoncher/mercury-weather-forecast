@@ -8,8 +8,10 @@ import WeatherCard from '../components/WeatherCard'
 import { cities } from '../constants'
 import { DailyForecast } from '../models/DailyForecast'
 import { weatherApi } from '../services/WeatherApi'
-import { dateToISO, dateToUnix, subtractDays } from '../utils/date'
+import { dateToISO, dateToUnix, isISODateValid, subtractDays } from '../utils/date'
 import { isErrorResponse } from '../services/models/ErrorResponse'
+
+const validateDate = (date: string, min: string, max: string): boolean => isISODateValid(date) && date >= min && date <= max
 
 const PastDateForecast: React.FC = () => {
   const [chosenCityId, setChosenCityId] = React.useState<string | undefined>(undefined)
@@ -17,8 +19,12 @@ const PastDateForecast: React.FC = () => {
   const [forecast, setForecast] = React.useState<DailyForecast | undefined>(undefined)
   const chosenCity = React.useMemo(() => cities.find((city) => city.id === chosenCityId), [chosenCityId])
 
+  const minDate = React.useMemo(() => dateToISO(subtractDays(new Date(), 5)), [])
+  const maxDate = React.useMemo(() => dateToISO(new Date()), [])
+  const isDateValid = React.useMemo(() => validateDate(date, minDate, maxDate), [date, minDate, maxDate])
+
   React.useEffect(() => {
-    if (chosenCity && date) {
+    if (chosenCity && date && isDateValid) {
       const unixDate = dateToUnix(new Date(date))
 
       weatherApi.fetchHistory(chosenCity, unixDate)
@@ -32,10 +38,7 @@ const PastDateForecast: React.FC = () => {
           })
         })
     }
-  }, [chosenCity, date])
-
-  const minDate = dateToISO(subtractDays(new Date(), 5))
-  const maxDate = dateToISO(new Date())
+  }, [chosenCity, date, isDateValid])
 
   return (
     <section className="past-date-forecast paper">
@@ -55,6 +58,7 @@ const PastDateForecast: React.FC = () => {
             value={date}
             min={minDate}
             max={maxDate}
+            hasError={Boolean(date) && !isDateValid}
             onDateChange={(event) => setDate(event.target.value)}
           />
         </div>

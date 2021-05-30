@@ -70,6 +70,10 @@
   border-radius: 8px;
   border-color: $color-secondary-light-x2;
 
+  &:hover {
+    border-color: $color-accent;
+  }
+
   input {
     flex: 1;
 

@@ -16,3 +16,5 @@ export const subtractDays = (date: Date, numberOfDays: number): Date => {
   newDate.setDate(date.getDate() - numberOfDays)
   return newDate
 }
+
+export const isISODateValid = (date: string) => !Number.isNaN(new Date(date).getDate())

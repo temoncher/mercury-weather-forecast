@@ -52,6 +52,11 @@
     }
   }
 
+  .weather-card {
+    // bottom margin to keep the box-shadow from clipping
+    margin-bottom: var(--paper-padding-horizontal);
+  }
+
   @media (max-width: $gridsize-sm) {
     // negative horizontal margin to ignore parent paddings around
     margin: 0 calc(var(--paper-padding-horizontal) * (-1));
@@ -67,8 +72,6 @@
 
       .weather-card {
         scroll-snap-align: center;
-        // positive bottom margin to keep the box-shadow from clipping
-        margin-bottom: var(--paper-padding-horizontal);
       }
     }
   }

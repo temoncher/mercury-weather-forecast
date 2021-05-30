@@ -24,4 +24,8 @@
   &--focused #{$self}__input-container {
     border-color: $color-accent;
   }
+
+  &--error #{$self}__input-container {
+    border-color: $color-danger;
+  }
 }

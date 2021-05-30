@@ -72,19 +72,24 @@ const Select: React.FC<SelectProps> = (props) => {
       switch (event.key) {
         case 'Escape':
           setIsOpen(false)
-          break
+          return
         case 'ArrowDown':
           setCurrentElementIndex(currentElementIndex + 1 >= childrenCount ? 0 : currentElementIndex + 1)
-          break
+          return
         case 'ArrowUp':
           setCurrentElementIndex(currentElementIndex - 1 < 0 ? childrenCount - 1 : currentElementIndex - 1)
-          break
+          return
         case 'Enter':
           chooseOptionByIndex(currentElementIndex)
-          break
+          return
         default:
-          break
+          return
       }
+    }
+
+    if (isFocused && event.key === 'Tab') {
+      // catches situation after choosing element by keyboard and hitting tab
+      setIsFocused(false)
 
       return
     }

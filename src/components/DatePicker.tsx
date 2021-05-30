@@ -5,8 +5,9 @@ import './DatePicker.scss'
 interface DatePickerProps {
   value: string;
   placeholder?: string;
-  min?: string | number;
-  max?: string | number;
+  min: string | number;
+  max: string | number;
+  hasError: boolean;
   onDateChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -15,7 +16,8 @@ const DatePicker: React.FC<DatePickerProps> = (props) => {
 
   const datepickerClass = classnames({
     datepicker: true,
-    'datepicker--focused': isFocused
+    'datepicker--focused': isFocused,
+    'datepicker--error': props.hasError
   })
 
   return (
