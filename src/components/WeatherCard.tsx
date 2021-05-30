@@ -20,11 +20,11 @@ const formatTemperature = (temperature: number): string => {
 }
 
 const WeatherCard: React.FC<WeatherCardProps> = (props) => (
-    <div className="weather-card">
+    <article className="weather-card">
       <span className="weather-card__date text-subtitle">{formatDayMonthYear(unixToDate(props.date))}</span>
       <img className="weather-card__image" src={`${ICON_URL_ROOT}${props.icon}@2x.png`} alt="weather" />
       <span className="weather-card__temperature">{formatTemperature(props.temperature)}</span>
-    </div>
+    </article>
 )
 
 export default WeatherCard
