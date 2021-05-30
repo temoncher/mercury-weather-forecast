@@ -9,29 +9,29 @@
 
   &__inputs-container {
     display: flex;
-  }
 
-  @media (min-width: $gridsize-sm) {
-    margin-bottom: 24px;
+    @media (min-width: $gridsize-sm) {
+      margin-bottom: 24px;
 
-    > :not(:last-child) {
-      margin-right: 4px;
+      > :not(:last-child) {
+        margin-right: 4px;
+      }
+
+      > :not(:first-child) {
+        margin-left: 4px;
+      }
     }
 
-    > :not(:first-child) {
-      margin-left: 4px;
-    }
-  }
+    @media (max-width: $gridsize-sm) {
+      flex-direction: column;
 
-  @media (max-width: $gridsize-sm) {
-    flex-direction: column;
+      > .select {
+        margin-bottom: 8px;
+      }
 
-    > .select {
-      margin-bottom: 8px;
-    }
-
-    > .datepicker {
-      margin-bottom: 16px;
+      > .datepicker {
+        margin-bottom: 16px;
+      }
     }
   }
 }

@@ -20,3 +20,16 @@ $gridsize-xl: 1200px;
 $gridsize-lg: 992px;
 $gridsize-md: 768px;
 $gridsize-sm: 576px;
+
+$card-box-shadow: 0px 4px 4px rgba(4, 5, 73, 0.25), 14px 14px 20px rgba(5, 6, 114, 0.2);
+
+:root {
+  // These are important in runtime, therefore we use css variables instead of sass ones
+  --paper-padding-horizontal: 40px;
+  --paper-margin-horizontal: 40px;
+
+  @media (max-width: 576px) {
+    --paper-padding-horizontal: 32px;
+    --paper-margin-horizontal: 8px;
+  }
+}

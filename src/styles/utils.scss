@@ -1,20 +1,14 @@
 @import "./variables.scss";
 
-$paper-padding-horizontal: 40px;
-$paper-margin-horizontal: 40px;
-
-$paper-width: ($gridsize-xl - ($paper-margin-horizontal * 3 + $paper-padding-horizontal * 4)) / 2;
-
 .paper {
   display: flex;
   flex-direction: column;
   padding: 32px 40px;
-  width: $paper-width;
+  width: calc((#{$gridsize-xl} - (var(--paper-margin-horizontal) * 3 + var(--paper-padding-horizontal) * 4)) / 2);
 
   border-radius: 8px;
   background-color: $color-accent-contrast;
-  box-shadow: 0px 4px 4px rgba(4, 5, 73, 0.25),
-    14px 14px 20px rgba(5, 6, 114, 0.2);
+  box-shadow: $card-box-shadow;
 
   &__header {
     color: $color-base-strong;
@@ -52,12 +46,9 @@ $paper-width: ($gridsize-xl - ($paper-margin-horizontal * 3 + $paper-padding-hor
   }
 
   @media (max-width: $gridsize-sm) {
-    $paper-padding-horizontal-sm: 32px;
-    $paper-margin-horizontal-sm: 8px;
-
-    padding: 24px $paper-padding-horizontal-sm;
-    margin: $paper-margin-horizontal-sm;
-    width: calc(100vw - (#{$paper-margin-horizontal-sm} * 2 + #{$paper-padding-horizontal-sm} * 2));
+    padding: 24px var(--paper-padding-horizontal);
+    margin: var(--paper-margin-horizontal);
+    width: calc(100vw - (var(--paper-margin-horizontal) * 2 + var(--paper-padding-horizontal) * 2));
   }
 }
 

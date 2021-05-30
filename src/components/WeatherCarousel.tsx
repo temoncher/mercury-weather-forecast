@@ -35,7 +35,7 @@ const WeatherCarousel: React.FC<WeatherCarouselProps> = (props) => {
 
   return (
     <div className="weather-carousel">
-      <button className="weather-carousel__left-button" onClick={scrollToPrevious}>
+      <button className="weather-carousel__button weather-carousel__button--left" onClick={scrollToPrevious}>
         <img src={ChevronLeftSrc} alt="chevron-left"/>
       </button>
       <div ref={cardsListRef} className="weather-carousel__list">
@@ -48,7 +48,7 @@ const WeatherCarousel: React.FC<WeatherCarouselProps> = (props) => {
           />
         ))}
       </div>
-      <button className="weather-carousel__right-button" onClick={scrollToNext}>
+      <button className="weather-carousel__button weather-carousel__button--right" onClick={scrollToNext}>
         <img src={ChevronRightSrc} alt="chevron-right"/>
       </button>
     </div>

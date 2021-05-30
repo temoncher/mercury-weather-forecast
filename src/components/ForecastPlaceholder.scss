@@ -1,6 +1,8 @@
+@import "src/styles/variables";
+
 .forecast-placeholder {
   flex: 1;
-  padding-top: 16px;
+  margin: 0;
 
   display: flex;
   flex-direction: column;
@@ -8,5 +10,9 @@
 
   &__image {
     align-self: center;
+  }
+
+  @media (min-width: $gridsize-sm) {
+    padding-top: 16px;
   }
 }

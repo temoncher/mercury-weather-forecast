@@ -1,3 +1,5 @@
+@import "src/styles/variables";
+
 .weather-carousel {
   position: relative;
   display: flex;
@@ -17,15 +19,57 @@
     &::-webkit-scrollbar {
       display: none;
     }
+
+    @media (max-width: $gridsize-sm) {
+      > :first-child {
+        margin-left: 32px;
+      }
+
+      > :last-child {
+        margin-right: 32px;
+      }
+    }
   }
 
-  &__left-button {
+  &__button {
     position: absolute;
-    left: -32px;
+    opacity: 0.7;
+
+    &--left {
+      left: -32px;
+    }
+
+    &--right {
+      right: -32px;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: $gridsize-sm) {
+      display: none;
+    }
   }
 
-  &__right-button {
-    position: absolute;
-    right: -32px;
+  @media (max-width: $gridsize-sm) {
+    // negative horizontal margin to ignore parent paddings around
+    margin: 0 calc(var(--paper-padding-horizontal) * (-1));
+
+    &__list {
+      > :first-child {
+        margin-left: var(--paper-padding-horizontal);
+      }
+
+      > :last-child {
+        margin-right: var(--paper-padding-horizontal);
+      }
+
+      .weather-card {
+        scroll-snap-align: center;
+        // positive bottom margin to keep the box-shadow from clipping
+        margin-bottom: var(--paper-padding-horizontal);
+      }
+    }
   }
 }

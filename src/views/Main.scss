@@ -11,7 +11,7 @@
     display: flex;
 
     @media (max-width: $gridsize-xl) {
-      width: $gridsize-lg;
+      width: $gridsize-xl;
       flex-direction: column;
       align-items: center;
     }

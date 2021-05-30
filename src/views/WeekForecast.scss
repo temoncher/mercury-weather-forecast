@@ -11,4 +11,14 @@
       margin-bottom: 16px;
     }
   }
+
+  @media (max-width: $gridsize-sm) {
+    // remove bottom padding according to bottom margin of each card provided to keep the box-shadow from clipping
+    padding-bottom: 0;
+
+    .forecast-placeholder {
+      // add bottom margin according to removed padding
+      margin: 0 0 32px;
+    }
+  }
 }
