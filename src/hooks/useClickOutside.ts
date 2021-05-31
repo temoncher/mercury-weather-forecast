@@ -4,7 +4,8 @@ export const useClickOutside = <T extends Element>(ref: React.RefObject<T>, hand
   React.useEffect(
     () => {
       const listener = (event: Event) => {
-        if (!ref.current || ref.current.contains(event?.target as Node)) {
+        const target = event?.target
+        if (!ref.current || !(target instanceof Node) || ref.current.contains(target)) {
           return
         }
 

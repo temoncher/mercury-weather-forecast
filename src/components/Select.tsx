@@ -1,7 +1,7 @@
 import * as React from 'react'
 import './Select.scss'
 import ChevronTopSrc from '../assets/icons/16/chevron-top.svg'
-import { OptionProps } from './Option'
+import { isOption, OptionProps } from './Option'
 import { useClickOutside } from '../hooks/useClickOutside'
 import { classnames } from '../utils/classnames'
 
@@ -9,8 +9,15 @@ interface SelectProps {
   value: string;
   label?: string;
   placeholder?: string;
-  onOptionClick: (value: unknown) => void;
+  onOptionClick: (value: string) => void;
 }
+
+/**
+ * Filters out all children except `<Option />`
+ * @param children child nodes
+ */
+const filterOptions = (children: React.ReactNode): React.FunctionComponentElement<OptionProps>[] => React.Children.toArray(children)
+  .reduce<React.FunctionComponentElement<OptionProps>[]>((acc, node) => isOption(node) ? [...acc, node] : acc, [])
 
 const Select: React.FC<SelectProps> = (props) => {
   const rootRef = React.useRef<HTMLDivElement>(null)
@@ -32,13 +39,13 @@ const Select: React.FC<SelectProps> = (props) => {
 
   useClickOutside(rootRef, () => setIsOpen(false))
 
-  const chooseOption = (value: unknown) => {
+  const chooseOption = (value: string) => {
     props.onOptionClick(value)
     setIsOpen(false)
   }
 
   const renderOptions = () => {
-    const children = props.children as React.FunctionComponentElement<OptionProps>
+    const children = filterOptions(props.children)
 
     return React.Children.map(children, (child, index) => {
       const additionalProps: Pick<OptionProps, 'onClick' | 'onHover' | 'isSelected' | 'isHighlighted'> = {
@@ -57,7 +64,7 @@ const Select: React.FC<SelectProps> = (props) => {
   }
 
   const chooseOptionByIndex = (index: number) => {
-    const children = React.Children.toArray(props.children) as React.FunctionComponentElement<OptionProps>[]
+    const children = filterOptions(props.children)
     const currentlyHighlightedChild = children.find((element, elementIndex) => elementIndex === index)
 
     if (currentlyHighlightedChild) {

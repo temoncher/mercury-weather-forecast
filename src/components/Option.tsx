@@ -3,11 +3,15 @@ import { classnames } from '../utils/classnames'
 import './Option.scss'
 
 export interface OptionProps {
-  onClick?: (value: unknown) => void;
+  onClick?: (value: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
   onHover?: () => void;
   isSelected?: boolean;
   isHighlighted?: boolean;
   value: string;
+}
+
+export const isOption = (node: React.ReactNode): node is React.FunctionComponentElement<OptionProps> => {
+  return true
 }
 
 const Option: React.FC<OptionProps> = (props) => {

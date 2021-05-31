@@ -40,7 +40,7 @@ const WeekForecast: React.FC = () => {
             placeholder="Select city"
             value={chosenCity?.id ?? ''}
             label={chosenCity?.name}
-            onOptionClick={(cityId) => setChosenCityId(cityId as string)}
+            onOptionClick={(cityId) => setChosenCityId(cityId)}
           >
             {cities.map((city) => <Option key={city.id} value={city.id}>{city.name}</Option>)}
           </Select>

@@ -13,24 +13,32 @@ const WeatherCarousel: React.FC<WeatherCarouselProps> = (props) => {
   const cardsListRef = React.useRef<HTMLDivElement>(null)
 
   const scrollToNext = (): void => {
-    const currentOffset = cardsListRef.current?.scrollLeft ?? 0
-    const carouselWidth = cardsListRef.current?.clientWidth ?? 0
-    const children = cardsListRef.current?.children ?? []
+    const currentCardsListRef = cardsListRef.current
 
-    const cards = Array.from(cardsListRef.current?.children ?? []) as HTMLElement[]
+    if (!currentCardsListRef) return
+
+    const currentOffset = currentCardsListRef.scrollLeft
+    const carouselWidth = currentCardsListRef.clientWidth
+
+    // `Element` to `HTMLElement` assertion, not ideal but can't really be avoided
+    const cards = Array.from(currentCardsListRef.children) as HTMLElement[]
     const firstCardNotInView = cards.findIndex((child) => child.offsetLeft >= currentOffset + carouselWidth)
 
-    children[firstCardNotInView]?.scrollIntoView({ behavior: 'smooth' })
+    cards[firstCardNotInView]?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const scrollToPrevious = (): void => {
-    const currentOffset = cardsListRef.current?.scrollLeft ?? 0
-    const children = cardsListRef.current?.children ?? []
+    const currentCardsListRef = cardsListRef.current
 
-    const cards = Array.from(cardsListRef.current?.children ?? []) as HTMLElement[]
+    if (!currentCardsListRef) return
+
+    const currentOffset = currentCardsListRef.scrollLeft
+
+    // `Element` to `HTMLElement` assertion, not ideal but can't really be avoided
+    const cards = Array.from(currentCardsListRef.children) as HTMLElement[]
     const currentCardIndex = cards.findIndex((child) => child.offsetLeft >= currentOffset)
 
-    children[currentCardIndex - 1]?.scrollIntoView({ behavior: 'smooth' })
+    cards[currentCardIndex - 1]?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
