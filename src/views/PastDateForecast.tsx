@@ -40,11 +40,17 @@ const PastDateForecast: React.FC = () => {
     }
   }, [chosenCity, date, isDateValid])
 
+  const preventRefresh = (event: React.KeyboardEvent<HTMLFormElement>): void => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+    }
+  }
+
   return (
     <section className="past-date-forecast paper">
       <h2 className="paper__header">Forecast for a Date in the Past</h2>
       <div className="past-date-forecast__content paper__content">
-        <div className="past-date-forecast__inputs-container">
+        <form className="past-date-forecast__inputs-container" onKeyDown={preventRefresh}>
           <Select
             placeholder="Select city"
             value={chosenCity?.id ?? ''}
@@ -61,7 +67,7 @@ const PastDateForecast: React.FC = () => {
             hasError={Boolean(date) && !isDateValid}
             onDateChange={(event) => setDate(event.target.value)}
           />
-        </div>
+        </form>
         {forecast
           ? (
               <WeatherCard

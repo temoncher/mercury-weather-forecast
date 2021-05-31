@@ -31,11 +31,17 @@ const WeekForecast: React.FC = () => {
     }
   }, [chosenCity])
 
+  const preventRefresh = (event: React.KeyboardEvent<HTMLFormElement>): void => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+    }
+  }
+
   return (
     <section className="week-forecast paper">
       <h2 className="paper__header">7 day forecast</h2>
       <div className="paper__content">
-        <div className="week-forecast__select-container">
+        <form className="week-forecast__select-container" onKeyDown={preventRefresh}>
           <Select
             placeholder="Select city"
             value={chosenCity?.id ?? ''}
@@ -44,7 +50,7 @@ const WeekForecast: React.FC = () => {
           >
             {cities.map((city) => <Option key={city.id} value={city.id}>{city.name}</Option>)}
           </Select>
-        </div>
+        </form>
         {dailies.length > 0 ? <WeatherCarousel dailies={dailies} /> : <ForecastPlaceholder />}
       </div>
     </section>
