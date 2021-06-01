@@ -4,32 +4,38 @@ import ForecastPlaceholder from '../components/ForecastPlaceholder'
 import Select from '../components/Select'
 import Option from '../components/Option'
 import { cities } from '../constants'
-import { weatherApi } from '../services/WeatherApi'
 import WeatherCarousel from '../components/WeatherCarousel'
 import { DailyForecast } from '../models/DailyForecast'
 import { City } from '../models/City'
+import { WeatherApiContext } from '../contexts/webApiContext'
+import { isErrorResponse } from '../services/models/ErrorResponse'
 
 const WeekForecast: React.FC = () => {
   const [chosenCityId, setChosenCityId] = React.useState<string | undefined>(undefined)
   const [dailies, setDailies] = React.useState<DailyForecast[]>([])
   const chosenCity = React.useMemo(() => cities.find((city) => city.id === chosenCityId), [chosenCityId])
-
-  const fetchDailies = async (chosenCity: City): Promise<DailyForecast[]> => {
-    const weeklyForecastResponse = await weatherApi.fetchWeeklyForecast(chosenCity)
-
-    return weeklyForecastResponse.daily.map((daily) => ({
-      temperature: daily.temp.day,
-      date: daily.dt,
-      icon: daily.weather[0].icon
-    }))
-  }
+  const weatherApi = React.useContext(WeatherApiContext)
 
   React.useEffect(() => {
+    const fetchDailies = async (chosenCity: City): Promise<DailyForecast[]> => {
+      if (!weatherApi) throw new Error('Weather api is not available')
+
+      const weeklyForecastResponse = await weatherApi.fetchWeeklyForecast(chosenCity)
+
+      if (isErrorResponse(weeklyForecastResponse)) throw new Error('Request failed')
+
+      return weeklyForecastResponse.daily.map((daily) => ({
+        temperature: daily.temp.day,
+        date: daily.dt,
+        icon: daily.weather[0].icon
+      }))
+    }
+
     if (chosenCity) {
       fetchDailies(chosenCity)
         .then((fetchedDailies) => setDailies(fetchedDailies))
     }
-  }, [chosenCity])
+  }, [chosenCity, weatherApi])
 
   const preventRefresh = (event: React.KeyboardEvent<HTMLFormElement>): void => {
     if (event.key === 'Enter') {

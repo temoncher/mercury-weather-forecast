@@ -1,0 +1,81 @@
+@import "src/styles/variables";
+
+.backdrop {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: #00000080;
+}
+
+.api-key-modal {
+  $self: &;
+
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__input-container {
+    margin-bottom: 16px;
+
+    @media (max-width: $gridsize-sm) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &--invalid #{$self}__input-container {
+    border-color: $color-danger;
+  }
+
+  &__button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__error-container {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__error-message {
+    color: $color-danger;
+  }
+
+  &__submit-button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+
+    align-self: flex-end;
+    padding: 12px 24px;
+    border-radius: $default-border-radius;
+
+    background-color: $color-accent;
+    color: $color-accent-contrast;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    @media (max-width: $gridsize-sm) {
+      padding: 8px 16px;
+    }
+  }
+
+  &__form {
+    padding: 32px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: $color-accent-contrast;
+    border-radius: $default-border-radius;
+
+    @media (max-width: $gridsize-sm) {
+      padding: 16px;
+    }
+  }
+}

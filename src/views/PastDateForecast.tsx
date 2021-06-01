@@ -7,9 +7,9 @@ import Option from '../components/Option'
 import WeatherCard from '../components/WeatherCard'
 import { cities } from '../constants'
 import { DailyForecast } from '../models/DailyForecast'
-import { weatherApi } from '../services/WeatherApi'
 import { dateToISO, dateToUnix, isISODateValid, subtractDays } from '../utils/date'
 import { isErrorResponse } from '../services/models/ErrorResponse'
+import { WeatherApiContext } from '../contexts/webApiContext'
 
 const validateDate = (date: string, min: string, max: string): boolean => isISODateValid(date) && date >= min && date <= max
 
@@ -18,18 +18,21 @@ const PastDateForecast: React.FC = () => {
   const [date, setDate] = React.useState('')
   const [forecast, setForecast] = React.useState<DailyForecast | undefined>(undefined)
   const chosenCity = React.useMemo(() => cities.find((city) => city.id === chosenCityId), [chosenCityId])
+  const weatherApi = React.useContext(WeatherApiContext)
 
   const minDate = React.useMemo(() => dateToISO(subtractDays(new Date(), 5)), [])
   const maxDate = React.useMemo(() => dateToISO(new Date()), [])
   const isDateValid = React.useMemo(() => validateDate(date, minDate, maxDate), [date, minDate, maxDate])
 
   React.useEffect(() => {
+    if (!weatherApi) throw new Error('Weather api is not available')
+
     if (chosenCity && date && isDateValid) {
       const unixDate = dateToUnix(new Date(date))
 
       weatherApi.fetchHistory(chosenCity, unixDate)
         .then((res) => {
-          if (isErrorResponse(res)) return
+          if (isErrorResponse(res)) throw new Error('Request failed')
 
           setForecast({
             date: res.current.dt,
@@ -38,7 +41,7 @@ const PastDateForecast: React.FC = () => {
           })
         })
     }
-  }, [chosenCity, date, isDateValid])
+  }, [chosenCity, date, isDateValid, weatherApi])
 
   const preventRefresh = (event: React.KeyboardEvent<HTMLFormElement>): void => {
     if (event.key === 'Enter') {

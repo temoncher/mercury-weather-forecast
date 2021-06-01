@@ -5,12 +5,6 @@
   display: flex;
   align-items: center;
 
-  button {
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-  }
-
   &__list {
     display: flex;
     overflow: auto;

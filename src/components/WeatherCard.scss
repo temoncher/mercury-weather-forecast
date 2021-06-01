@@ -13,7 +13,7 @@
   background-color: $color-accent;
   box-shadow: $card-box-shadow;
 
-  border-radius: 8px;
+  border-radius: $default-border-radius;
 
   &__date {
     text-align: left;

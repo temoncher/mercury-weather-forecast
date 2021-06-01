@@ -3,17 +3,19 @@ import { ErrorResponse } from './models/ErrorResponse'
 import { HistoryResponse } from './models/HistoryResponse'
 import { WeeklyForecastResponse } from './models/WeeklyForecastResponse'
 
-class WeatherApi {
+export class WeatherApi {
   private readonly API_ROOT = 'https://api.openweathermap.org/';
 
-  async fetchWeeklyForecast (city: City): Promise<WeeklyForecastResponse> {
+  constructor (private readonly API_KEY: string) {}
+
+  async fetchWeeklyForecast (city: City): Promise<WeeklyForecastResponse | ErrorResponse> {
     const url = new URL(`${this.API_ROOT}data/2.5/onecall`)
     const params = new URLSearchParams({
       lat: String(city.latitude),
       lon: String(city.longitude),
       exclude: 'hourly,alerts,minutely,current',
       units: 'metric',
-      appid: String(process.env.REACT_APP_WEATHER_API_KEY)
+      appid: String(this.API_KEY)
     })
 
     url.search = params.toString()
@@ -28,7 +30,7 @@ class WeatherApi {
       lon: String(city.longitude),
       dt: String(unixDate),
       units: 'metric',
-      appid: String(process.env.REACT_APP_WEATHER_API_KEY)
+      appid: String(this.API_KEY)
     })
 
     url.search = params.toString()
@@ -36,5 +38,3 @@ class WeatherApi {
     return fetch(url.toString()).then((res) => res.json())
   }
 }
-
-export const weatherApi = new WeatherApi()
