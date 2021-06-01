@@ -13,7 +13,7 @@ const App: React.FC = () => {
 
   const rootClasses = classnames({
     root: true,
-    unscrollable: Boolean(apiKey)
+    unscrollable: !apiKey
   })
 
   return (
