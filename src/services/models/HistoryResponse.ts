@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 import { DailyForecastResponse } from './DailyForecastResponse'
-import { WeatherDescriptionResponse } from './WeatherDescriptionResponse'
 
 type HourlyForecastResponse = Pick<
   DailyForecastResponse,
